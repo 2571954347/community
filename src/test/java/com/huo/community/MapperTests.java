@@ -1,9 +1,11 @@
 package com.huo.community;
 
 import com.huo.community.dao.DiscussPostMapper;
+import com.huo.community.dao.LoginTicketMapper;
 import com.huo.community.dao.UserMapper;
 import com.huo.community.entity.DiscussPost;
 import com.huo.community.entity.User;
+import com.huo.community.util.CommunityUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,6 +21,8 @@ public class MapperTests {
     private UserMapper userMapper;
     @Autowired
     private DiscussPostMapper discussPostMapper;
+    @Autowired
+    private LoginTicketMapper loginTicketMapper;
 
     @Test
     public void testSelectUser() {
@@ -46,5 +50,20 @@ public class MapperTests {
         for (DiscussPost discussPost : discussPosts) {
             System.out.println(discussPost);
         }
+    }
+
+    @Test
+    public void loginTicketMapper() {
+        /*LoginTicket loginTicket = new LoginTicket();
+        loginTicket.setUserId(101);
+        loginTicket.setTicket("abc");
+        loginTicket.setStatus(0);
+        loginTicket.setExpired(new Date());
+        loginTicketMapper.insertLoginTicket(loginTicket);*/
+        System.out.println(loginTicketMapper.updateStatus("abc", 1));
+    }
+    @Test
+    public void testMd5(){
+        System.out.println(CommunityUtil.md5("111111"));
     }
 }

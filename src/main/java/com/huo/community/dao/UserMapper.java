@@ -16,7 +16,7 @@ public interface UserMapper {
 
     int updateStatus(int id, int status);//更新用户状态
 
-    int updateHeaderUrl(int id, String email);//更新用户邮箱
+    int updateHeaderUrl(int id, String headerUrl);//更新用户头像
 
     int updatePassword(int id, String password);//更新用户密码
 
