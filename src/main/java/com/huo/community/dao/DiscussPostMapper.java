@@ -24,4 +24,9 @@ public interface DiscussPostMapper {
      */
     int selectDiscussPostRows(@Param("userId") int userId);
 
+    int insertDiscussPost(DiscussPost discussPost); //新增贴子
+
+    DiscussPost selectDiscussPostById(int id); //根据id查询帖子
+
+    int updateCommentCount(int id,int commentCount);
 }

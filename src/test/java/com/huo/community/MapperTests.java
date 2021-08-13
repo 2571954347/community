@@ -2,8 +2,10 @@ package com.huo.community;
 
 import com.huo.community.dao.DiscussPostMapper;
 import com.huo.community.dao.LoginTicketMapper;
+import com.huo.community.dao.MessageMapper;
 import com.huo.community.dao.UserMapper;
 import com.huo.community.entity.DiscussPost;
+import com.huo.community.entity.Message;
 import com.huo.community.entity.User;
 import com.huo.community.util.CommunityUtil;
 import org.junit.jupiter.api.Test;
@@ -23,6 +25,8 @@ public class MapperTests {
     private DiscussPostMapper discussPostMapper;
     @Autowired
     private LoginTicketMapper loginTicketMapper;
+    @Autowired
+    private MessageMapper messageMapper;
 
     @Test
     public void testSelectUser() {
@@ -62,8 +66,26 @@ public class MapperTests {
         loginTicketMapper.insertLoginTicket(loginTicket);*/
         System.out.println(loginTicketMapper.updateStatus("abc", 1));
     }
+
     @Test
-    public void testMd5(){
+    public void testMd5() {
         System.out.println(CommunityUtil.md5("111111"));
+    }
+
+    @Test
+    public void selectLetter() {
+       /* List<Message> messages = messageMapper.selectConversations(111, 0, 20);
+        for (Message message : messages) {
+            System.out.println(message);
+        }*/
+        /*System.out.println(messageMapper.selectConversationCount(111));*/
+
+        List<Message> letters = messageMapper.selectLetters("111_112", 0, 10);
+        for (Message letter : letters) {
+            System.out.println(letter);
+        }
+        System.out.println(messageMapper.selectLetterCount("111_112"));
+
+        System.out.println(messageMapper.selectLetterUnreadCount(131, "111_131"));
     }
 }
